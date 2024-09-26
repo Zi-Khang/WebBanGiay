@@ -1,0 +1,50 @@
+﻿@model List<DoAn.Models.Product>
+@{
+    ViewBag.Title = "SPTheoLoai";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<div class="title-wrapper">
+    <h2 class="main-title">Sản Phẩm theo loại</h2>
+</div>
+@if (ViewBag.TB != null)
+{
+    @ViewBag
+}
+else
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <a href="/Products/XemChiTiet?msp=@item.ProductID">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <img src="../Contents/images/@item.ProductImage" />
+                        </div>
+                        <div class="product-description">
+                            <h3>@item.ProductName</h3>
+                            <div class="product-price">
+                                <b>@item.Price</b>
+                            </div>
+                            <div class="product-add-cart">
+                                <a href="/Cart/muaNgay?msp=@item.ProductID">
+                                    <div class="product-buy-now-btn product-btn">
+                                        Mua ngay
+                                    </div>
+                                </a>
+                                <a href="/Cart/themVaoGioHang?msp=@item.ProductID">
+                                    <div class="product-buy-now-btn product-btn">
+                                        Thêm vào giỏ hàng
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+}
+
+

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebBanGiayModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="WebBanGiayModelStoreContainer">
+    <EntitySet Name="Brands" EntityType="WebBanGiayModel.Store.Brands" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderDetails" EntityType="WebBanGiayModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Orders" EntityType="WebBanGiayModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="WebBanGiayModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="WebBanGiayModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK__OrderDeta__Order__412EB0B6" Association="WebBanGiayModel.Store.FK__OrderDeta__Order__412EB0B6">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Produ__4222D4EF" Association="WebBanGiayModel.Store.FK__OrderDeta__Produ__4222D4EF">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__UserID__3E52440B" Association="WebBanGiayModel.Store.FK__Orders__UserID__3E52440B">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Products__BrandI__398D8EEE" Association="WebBanGiayModel.Store.FK__Products__BrandI__398D8EEE">
+      <End Role="Brands" EntitySet="Brands" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Brands">
+    <Key>
+      <PropertyRef Name="BrandID" />
+    </Key>
+    <Property Name="BrandID" Type="int" Nullable="false" />
+    <Property Name="BrandName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="OrderStatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="255" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="BrandID" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="nvarchar" MaxLength="255" />
+    <Property Name="Password" Type="nvarchar" MaxLength="255" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Address" Type="nvarchar" MaxLength="255" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__OrderDeta__Order__412EB0B6">
+    <End Role="Orders" Type="WebBanGiayModel.Store.Orders" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="WebBanGiayModel.Store.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Produ__4222D4EF">
+    <End Role="Products" Type="WebBanGiayModel.Store.Products" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="WebBanGiayModel.Store.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__UserID__3E52440B">
+    <End Role="Users" Type="WebBanGiayModel.Store.Users" Multiplicity="0..1" />
+    <End Role="Orders" Type="WebBanGiayModel.Store.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Products__BrandI__398D8EEE">
+    <End Role="Brands" Type="WebBanGiayModel.Store.Brands" Multiplicity="0..1" />
+    <End Role="Products" Type="WebBanGiayModel.Store.Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brands">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

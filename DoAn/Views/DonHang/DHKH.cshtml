@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DoAn.Models.Order>
+
+@{
+    ViewBag.Title = "DHKH";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>DHKH</h2>
+
+
+</table>
+<table class="table w-50 m-auto">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Tên khách hàng</td>
+            <td>Ngày đặt</td>
+            <td>Tổng số lượng</td>
+            <td>Tình trạng</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderID</td>
+                <td>@item.User.Username</td>
+                <td>@item.OrderDate</td>
+                <td>@item.TotalAmount</td>
+                <td>@item.OrderStatus</td>
+                @*<td><a href="/Cart/Muasp?id=@item.ProductID">Add to cart</a></td>*@
+            </tr>
+        }
+    </tbody>
+
+</table>
+

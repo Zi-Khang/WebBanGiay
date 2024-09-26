@@ -1,0 +1,63 @@
+﻿@model DoAn.Models.Product
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<form action="/products/edit?id=@Model.ProductID" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-12">
+            <label for="ProductID">ID</label>
+            <input class="form-control" type="text" name="ProductID" id="ProductID" value="@Model.ProductID" readonly/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="ProductName">Name</label>
+            <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="Name" value="@Model.ProductName" />
+        </div>
+        <div class="col-md-4">
+            <label for="Description">Description</label>
+            <input class="form-control" type="text" name="Description" id="Description" placeholder="Description" value="@Model.Description" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="Price">Price</label>
+            <input class="form-control" type="number" name="Price" id="Price" placeholder="Price" value="@Model.Price" />
+        </div>
+        <div class="col-md-4">
+            <label for="BrandID">Brand</label>
+            <select class="form-control" name="BrandID" id="BrandID">
+                <option value="">Please select...</option>
+                @foreach (var item in ViewBag.Brand)
+                {
+                    if (@Model.BrandID == @item.BrandID)
+                    {
+                        <option value="@item.BrandID" selected>@item.BrandName</option> 
+                    }
+                    else
+                    {
+                        <option value="@item.BrandID" >@item.BrandName</option>
+                    }
+                }
+            </select>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <label for="ProductImage">ProductImage</label>
+            <img src="~/Contents/images/@Model.ProductImage" style="height: 200px; width:200px; margin: 10px;" id="previewImage" />
+            <input class="form-control" type="file" name="ImageUpload" onchange="ShowImagePreView(this, document.getElementById('previewImage')) " />
+            
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">
+        Edit
+    </button>
+    <button type="button" href="/products/Index" class="btn btn-danger">
+        Cancel
+    </button>
+</form>

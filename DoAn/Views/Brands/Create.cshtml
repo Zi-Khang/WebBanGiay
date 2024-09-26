@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Create</h2>
+<form action="/Brands/create" method="post" enctype="multipart/form-data" >
+    <div class="row">
+        <div class="col-md-4">
+            <label for="BrandName">BrandName</label>
+            <input class="form-control" type="text" name="BrandName" id="BrandName" placeholder="Name" />
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary" value="Save" id="btn_Save" name="btnSave">
+        Save
+    </button>
+    @*<button type="submit" class="btn btn-success">
+        Create
+    </button>*@
+    <button type="submit" class="btn btn-danger">
+        Cancel
+    </button>
+</form>
+
+<br />
+<div id="msg" style="color:blue">
+
+</div>
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btn_Save").click(function () {
+                var brandName = $("#BrandName").val();
+
+                // Kiểm tra xem BrandName có giá trị không
+                if (brandName.trim() === "") {
+                    alert("BrandName không được để trống.");
+                    return;
+                }
+
+                // Gửi yêu cầu Ajax để thêm brand mới
+                $.ajax({
+                    type: "POST",
+                    url: '/Brands/create',
+                    data: { BrandName: brandName },
+                    success: function (response) {
+                        if (response.result) {
+                            // Hiển thị thông báo thành công hoặc thực hiện các thao tác khác cần thiết
+                            $("#msg").text("Thêm dữ liệu thành công");
+                        } else {
+                            // Hiển thị thông báo lỗi hoặc xử lý lỗi khác
+                            $("#msg").text(response.error);
+                        }
+                    },
+                    error: function (response) {
+                        // Xử lý lỗi Ajax
+                        alert("Lỗi trong khối lệnh ajax");
+                    }
+                });
+            });
+        });
+    </script>
+}
+

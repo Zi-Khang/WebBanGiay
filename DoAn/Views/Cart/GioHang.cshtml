@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@model IEnumerable<DoAn.Models.Cart>
+
+@{
+    var soluong = 0;
+}
+<table class="table">
+    <tr>
+        <th>MA SP</th>
+        <th>TEN SP</th>
+        <th>Anh</th>
+        <th>SL</th>
+        <th>DON GIA</th>
+        <th>THANH TIEN</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        soluong = soluong + item.sl;
+        double tongtien = Convert.ToDouble(item.sl * item.dongia);
+        <tr >
+            <td>@item.masp</td>
+            <td>@item.ten</td>
+            <td><img src="~/Contents/images/@item.anh" width="60" height="60" /></td>
+            <td>@item.sl</td>
+            <td>@item.dongia</td>
+            <td>@tongtien</td>
+            <td>
+                <a href="/SanPham/XemChiTiet?msp=@item.masp">Details</a>
+            </td>
+            <td>
+                <a href="/Cart/XoaGioHang?msp=@item.masp">Delete</a>
+            </td>
+        </tr>
+
+    }
+    <tr>
+        <td style="color:blue">Tổng cộng </td>
+        <td></td>
+        <td style="color:red">Số lượng: @soluong   </td>
+        <td></td>
+        <td style="color:red">Tổng tiền: @ViewBag.total </td>
+    </tr>
+    <a href="/Cart/Checkout">Check out</a>
+</table>
+

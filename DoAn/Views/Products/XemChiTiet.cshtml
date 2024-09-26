@@ -1,0 +1,50 @@
+﻿@model DoAn.Models.Product
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>XemChiTiet</h2>
+<main class="main">
+    <div class="product-item-inf">
+        <div class="container">
+            <div class="product-item-wrapper">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="item-image">
+                            <img class="main-img" src="~/Contents/images/@Model.ProductImage" alt="">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="item-inf">
+                            <h2>@Model.ProductName</h2>
+                            <div class="price">
+                                <b>@Model.Price</b>
+                            </div>
+                            <div class="bao-hanh">
+                                <ul>
+                                    <li>Miễn phí giao hàng toàn quốc</li>
+                                    <li>Bảo hành 5 năm</li>
+                                    <li>Sản phẩm chính hãng</li>
+                                    <li>Đổi trả 7 ngày bất kỳ lỗi nào đến từ nhà sản xuất</li>
+                                </ul>
+                            </div>
+                            <p class="xuat-xu">
+                                @Model.Description
+                            </p>
+                            <div class="product-item-btn">
+                                <a href="/Cart/muaNgay?msp=@Model.ProductID">
+                                    <button class="mua">Mua ngay</button>
+                                </a>
+                                <a href="/Cart/themVaoGioHang?msp=@Model.ProductID">
+                                    <button class="them">Thêm vào giỏ hàng</button>
+                                </a>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DoAn.Models.Brand>
+
+
+@foreach (var item in Model)
+{
+    <li><a href="/Products/SPTheoLoai?maloai=@item.BrandID">@item.BrandName</a></li>
+}
+@*<div class="col col-md-2  card">
+
+
+    <ul class="list-group list-group-flush text-left">
+        <li class="list-group-item" style="background-color:red;"><a href="#" style="text-transform:uppercase; text-decoration:none; color:white; font-weight:bold;">Điện Thoại</a></li>
+
+        @{
+            foreach (var item in Model)
+            {
+                if (item.Note.Trim() == "DT")
+                {
+                    <li class="list-group-item" style="text-transform:uppercase; text-decoration:none;">
+                        <a href="@Url.Action("SPTheoLoai", "SanPham", new { MaLoai = item.MaLoai })">@item.TenLoai</a>
+                    </li>
+                }
+            }
+        }
+    </ul>
+
+    <ul class="list-group list-group-flush text-left">
+        <li class="list-group-item" style="background-color:red;"><a href="#" style="text-transform:uppercase; text-decoration:none; color:white; font-weight:bold;">Laptop</a></li>
+
+        @{
+            foreach (var item in Model)
+            {
+                if (item.Note.Trim() == "Lap")
+                {
+                    <li class="list-group-item" style="text-transform:uppercase; text-decoration:none;">
+                        <a href="@Url.Action("SPTheoLoai", "SanPham", new { MaLoai = item.MaLoai })">@item.TenLoai</a>
+                    </li>
+                }
+            }
+        }
+
+    </ul>
+
+    <ul class="list-group list-group-flush text-left">
+        <li class="list-group-item" style="background-color:red;"><a href="#" style="text-transform:uppercase; text-decoration:none; color:white; font-weight:bold;">Phụ kiện</a></li>
+
+        @{
+            foreach (var item in Model)
+            {
+                if (item.Note.Trim() == "PK")
+                {
+                    <li class="list-group-item" style="text-transform:uppercase; text-decoration:none;">
+                        <a href="@Url.Action("SPTheoLoai", "SanPham", new { MaLoai = item.MaLoai })">@item.TenLoai</a>
+                    </li>
+                }
+            }
+        }
+
+
+    </ul>
+</div>*@
+

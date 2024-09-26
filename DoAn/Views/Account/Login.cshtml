@@ -1,0 +1,122 @@
+﻿@{
+    Layout = null;
+}
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <form action="/Account/Login" class="border p-4 mt-5" method="post">
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="Username">Email address</label>
+                        <input type="text" id="Username" name="Username" class="form-control" required/>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="Password">Password</label>
+                        <input type="password" name="Password" id="Password" class="form-control" />
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Elite login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+    <script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+
+    </script>
+    <link href="~/Layout/StyleSheet1.css" rel="stylesheet">
+    <link href="~/Layout/StyleSheet2.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+</head>
+<body style="background: url('https://bumshop.com.vn/wp-content/uploads/2019/12/tulo-shop.jpg') center/cover no-repeat; margin: 100px ">
+    <h1>Sign In</h1>
+    <div class="w3ls-login">
+        <form action="/Account/Login" method="post">
+            <div class="agile-field-txt">
+                <label>
+                    <i class="fa fa-user" aria-hidden="true"></i> Username :
+                </label>
+                <input type="text" id="Username" name="Username" class="form-control" required />
+            </div>
+            <div class="agile-field-txt">
+                <label>
+                    <i class="fa fa-lock" aria-hidden="true"></i> password :
+                </label>
+                <input type="password" name="Password" id="Password" class="form-control" />
+
+                @*<div class="agile_label">
+                    <input id="check3" name="check3" type="checkbox" value="show password" onclick="myFunction()">
+                    <label class="check" for="check3">Show password</label>
+                    <a href="@Url.Action("ForgotPassword", "User")" class="w3ls-right">Forgot password?</a>
+                </div>*@
+            </div>
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("myInput");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+            </script>
+            <div class="w3ls-login  w3l-sub">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+
+    <div class="w3ls-login w3l-sub">
+        <a href="#" id="registerButton" class="register-btn">Register</a>
+    </div>
+
+    <script>
+        document.getElementById("registerButton").addEventListener("click", function () {
+            // Set the URL of your registration page
+            var registrationPageUrl = "/Account/Register"; // Assuming "AccountController" and "Registration" action
+
+            // Redirect to the registration page
+            window.location.href = registrationPageUrl;
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5e81f844811746f588303386e9b64856" Name="Diagram1">
+        <EntityTypeShape EntityType="WebBanGiayModel.Brand" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGiayModel.OrderDetail" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGiayModel.Order" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGiayModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanGiayModel.User" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="WebBanGiayModel.FK__Products__BrandI__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGiayModel.FK__OrderDeta__Order__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGiayModel.FK__OrderDeta__Produ__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanGiayModel.FK__Orders__UserID__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

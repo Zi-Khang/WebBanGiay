@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+    <form action="/products/create" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="ProductName">Name</label>
+                <input class="form-control" type="text" name="ProductName" id="ProductName" placeholder="Name" />
+            </div>
+            <div class="col-md-4">
+                <label for="Description">Description</label>
+                <input class="form-control" type="text" name="Description" id="Description" placeholder="Description" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="Price">Price</label>
+                <input class="form-control" type="number" name="Price" id="Price" placeholder="Price" />
+            </div>
+            <div class="col-md-4">
+                <label for="BrandID">Brand</label>
+                <select class="form-control" name="BrandID" id="BrandID">
+                    @foreach (var item in ViewBag.Brand)
+                    {
+                        <option value="@item.BrandID" >@item.BrandName</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <label for="ProductImage">ProductImage</label>
+                <img src="@Url.Content(Model.ProductImage)" style="height: 200px; width:200px; margin: 10px;" id="previewImage"/>
+                <input class="form-control" type="file" name="ImageUpload" onchange="ShowImagePreView(this, document.getElementById('previewImage'))" />
+                @*<input class="form-control" type="file" name="ProductImage" value="ProductImage"  />*@
+            </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-success">
+            Create
+        </button>
+        <button type="submit" class="btn btn-danger">
+            Cancel
+        </button>
+    </form>

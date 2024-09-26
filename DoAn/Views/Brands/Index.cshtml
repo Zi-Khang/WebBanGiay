@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@model List<DoAn.Models.Brand>
+
+@if (Session["ID"] == null)
+{
+    <a href="/Brands/Create">Create</a>
+
+    <h2>Product</h2>
+    <form action="/products/index" method="post" class="d-flex flex-row align-items-center flex-wrap">
+        <label for="search" class="mx-2 my-1">Search</label>
+        <input type="search" name="search" id="search" placeholder="Search" value="@ViewBag.Search" />
+    </form>
+    <table class="table w-50 m-auto">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Update</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+             @foreach (var item in Model)
+             {
+                <tr>
+                    <td>@item.BrandID</td>
+                    <td>@item.BrandName</td>
+                    <td><a href="/Brands/Edit?id=@item.BrandID">Sửa</a></td>
+                    <td><a href="/Brands/delete?id=@item.BrandID">Xóa</a></td>
+                </tr>
+             }
+        </tbody>
+    
+    </table>
+}
+else
+{
+    <h2>Product</h2>
+    <form action="/products/index" method="post" class="d-flex flex-row align-items-center flex-wrap">
+        <label for="search" class="mx-2 my-1">Search</label>
+        <input type="search" name="search" id="search" placeholder="Search" value="@ViewBag.Search" />
+    </form>
+    <table class="table w-50 m-auto">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Add</td>
+                <td>Update</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.BrandID</td>
+                    <td>@item.BrandName</td>
+                    <td><a href="#">Thêm</a></td>
+                    <td><a href="#">Sửa</a></td>
+                    <td><a href="#">Xóa</a></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+}
+
+

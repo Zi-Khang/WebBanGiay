@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@model DoAn.Models.Brand
+
+<form action="/Brands/edit?@Model.BrandID" method="post">
+    <div class="row">
+        <div class="col-12">
+            <label for="BrandID">ID</label>
+            <input class="form-control" type="text" name="BrandID" id="BrandID" value="@Model.BrandID" readonly />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label for="BrandName">Name</label>
+            <input class="form-control" type="text" name="BrandName" id="BrandName" placeholder="Name" value="@Model.BrandName" />
+        </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">
+        Edit
+    </button>
+    <button type="submit" class="btn btn-danger">
+        Cancel
+    </button>
+</form>

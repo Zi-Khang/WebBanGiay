@@ -1,0 +1,43 @@
+﻿@model DoAn.Models.Order
+
+@{
+    ViewBag.Title = "cancel";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<form action="/DonHang/cancel?id=@Model.OrderID" method="post">
+    <div class="row">
+        <div class="col-12">
+            <label for="OrderID">ID</label>
+            <input class="form-control" type="text" name="OrderID" id="OrderID" value="@Model.OrderID" readonly />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="ProductName">Tên khách hàng</label>
+            <input class="form-control" type="text" name="@Model.UserID" id="@Model.UserID" placeholder="Name" value="@Model.User.Username" readonly/>
+        </div>
+        <div class="col-md-4">
+            <label for="OrderDate">Ngày đặt</label>
+            <input class="form-control" type="text" name="OrderDate" id="OrderDate" placeholder="Ngày đặt" value="@Model.OrderDate" readonly/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="TotalAmount">Tổng số lượng</label>
+            <input class="form-control" type="number" name="TotalAmount" id="TotalAmount" placeholder="Tổng số lượng" value="@Model.TotalAmount" readonly/>
+        </div>
+        <div class="col-md-4">
+            <label for="OrderStatus">Hãy nhập lý do hủy đơn hàng:</label>
+            <input class="form-control" name="OrderStatus" id="OrderStatus" required/>
+        </div>
+
+    </div>
+    <br />
+    <button type="submit" class="btn btn-success">
+        Edit
+    </button>
+    <button type="button" href="/DonHang/Index" class="btn btn-danger">
+        Cancel
+    </button>
+</form>
